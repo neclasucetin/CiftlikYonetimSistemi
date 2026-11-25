@@ -1,0 +1,59 @@
+﻿@using CiftlikYonetimSistemi.Models
+@model List<Atlar>
+@{
+    ViewBag.Title = "Listele";
+    Layout = "~/Areas/YoneticiPanel/Views/Shared/YoneticiLayout.cshtml";
+}
+
+<div class="card mt-4 shadow border-0 rounded-4">
+    <div class="card-header bg-success text-white p-4 rounded-top-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-1">🐎 At Yönetimi</h4>
+                <small>Çiftlikte kayıtlı atları görüntüleyebilirsiniz.</small>
+            </div>
+
+            <a href="@Url.Action("Ekle", "At")" class="btn btn-light">
+                + Yeni At Ekle
+            </a>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped align-middle">
+                <thead class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Atın Adı</th>
+                        <th>Atın Yaşı</th>
+                        <th>Atın Cinsiyeti</th>
+                        <th>Atın Irkı</th>
+                        <th>Atın Rengi</th>
+                        <th>Sağlık Durumu</th>
+                        <th>Atın Sahibi</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Atlar item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.AtAdi</td>
+                            <td>@item.Yas</td>
+                            <td>@item.Cinsiyet</td>
+                            <td>@item.Irk</td>
+                            <td>@item.Renk</td>
+                            <td>@item.SaglikDurumu</td>
+                            <td>@item.Pansiyonerler.Isim @item.Pansiyonerler.Soyisim</td>
+                            <td>
+                                <a href="@Url.Action("Duzenle", "At", new {id = item.ID} )" class="btn btn-primary btn-sm">Düzenle</a>
+                                <a href="@Url.Action("Sil", "At", new {id = item.ID})" class="btn btn-danger btn-sm">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

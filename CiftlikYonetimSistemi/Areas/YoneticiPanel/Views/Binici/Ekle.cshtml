@@ -1,0 +1,69 @@
+﻿
+@using CiftlikYonetimSistemi.Models
+@model Biniciler
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/YoneticiPanel/Views/Shared/YoneticiLayout.cshtml";
+}
+
+<div class="card mt-4 mx-auto shadow border-0 rounded-4" style="max-width:850px;">
+
+    <div class="card-header bg-success text-white p-4 rounded-top-4">
+        <h4 class="mb-1">🏇 Binici Ekle</h4>
+        <small>Çiftliğe yeni bir binici kaydı oluşturabilirsiniz.</small>
+    </div>
+
+    <div class="card-body p-4">
+
+        @using (Html.BeginForm())
+        {
+            if (ViewBag.durum != null)
+            {
+                if (ViewBag.durum == true)
+                {
+                    <div class="alert alert-success rounded-3">Binici Ekleme Başarılı</div>
+                }
+                else
+                {
+                    <div class="alert alert-danger rounded-3">Binici Ekleme Başarısız</div>
+                }
+            }
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">İsim</label>
+                    @Html.EditorFor(model => model.Isim, new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Binici adı" } })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Soyisim</label>
+                    @Html.EditorFor(model => model.Soyisim, new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Binici soyadı" } })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Telefon</label>
+                    @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Telefon numarası" } })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">E-posta</label>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Binici e-posta adresi" } })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Deneyim Seviyesi</label>
+                    @Html.EditorFor(model => model.DeneyimSeviyesi, new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Binicinin deneyim seviyesi" } })
+                </div>
+
+            </div>
+
+            <div class="d-flex gap-2 mt-3">
+                <button type="submit" class="btn btn-success px-4 rounded-3">
+                    Binici Kaydet
+                </button>
+            </div>
+        }
+
+    </div>
+</div>

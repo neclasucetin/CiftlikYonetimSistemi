@@ -1,0 +1,83 @@
+﻿
+@using CiftlikYonetimSistemi.Models
+@model Atlar
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/YoneticiPanel/Views/Shared/YoneticiLayout.cshtml";
+}
+
+<div class="card mt-4 mx-auto shadow border-0 rounded-4" style="max-width:850px;">
+    <div class="card-header bg-success text-white p-4 rounded-top-4">
+        <h4 class="mb-1">🐎 Yeni At Kaydı</h4>
+        <small>Çiftliğe yeni bir at eklemek için bilgileri doldurunuz.</small>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            if (ViewBag.durum != null)
+            {
+                if (ViewBag.durum == true)
+                {
+                    <div class="alert alert-success">At Ekleme Başarılı</div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">At Ekleme Başarısız</div>
+                }
+            }
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label>At Adı</label>
+                    @Html.EditorFor(model => model.AtAdi,
+                    new { htmlAttributes = new { @class = "form-control", placeholder = "Atın adını giriniz" } })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>At Yaşı</label>
+                    @Html.EditorFor(model => model.Yas,
+                    new { htmlAttributes = new { @class = "form-control", placeholder = "Atın yaşını giriniz" } })
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">At Cinsiyeti</label>
+                    @Html.EditorFor(model => model.Cinsiyet,
+                    new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Cinsiyet giriniz" } })
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">At Irkı</label>
+                    @Html.EditorFor(model => model.Irk,
+                    new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Atın ırkını giriniz" } })
+                </div>
+
+            </div>
+            
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">At Rengi</label>
+                    @Html.EditorFor(model => model.Renk,
+                    new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Atın rengini giriniz" } })
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Atın Sağlık Durumu</label>
+                    @Html.EditorFor(model => model.SaglikDurumu,
+                    new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Atın sağlık durumunu giriniz" } })
+                </div>
+
+            </div>
+            
+            <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Atın Sahibi (ID)</label>
+                @Html.EditorFor(model => model.Pansiyonerler_ID,
+                new { htmlAttributes = new { @class = "form-control rounded-3", placeholder = "Pansiyoner ID giriniz" } })
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-success">At Ekle</button>
+            </div>
+        }
+    </div>
+</div>

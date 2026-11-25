@@ -1,0 +1,79 @@
+﻿@using CiftlikYonetimSistemi.Models
+@model Dersler
+
+@{
+    ViewBag.Title = "Ders Ekle";
+    Layout = "~/Areas/YoneticiPanel/Views/Shared/YoneticiLayout.cshtml";
+}
+
+<div class="card shadow border-0 rounded-4 mt-4">
+
+    <div class="card-header bg-success text-white p-4 rounded-top-4">
+        <h4 class="mb-1">📚 Ders Ekle</h4>
+        <small>Yeni bir binicilik dersi oluşturun.</small>
+    </div>
+
+    <div class="card-body p-4">
+
+        @if (ViewBag.durum != null)
+        {
+            if (ViewBag.durum == true)
+            {
+                <div class="alert alert-success">Ders başarıyla eklendi!</div>
+            }
+            else
+            {
+                <div class="alert alert-danger">Ders eklenirken bir hata oluştu!</div>
+            }
+        }
+
+        @using (Html.BeginForm("Ekle", "Ders", FormMethod.Post))
+        {
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Ders Tarihi</label>
+                    @Html.TextBoxFor(x => x.DersTarihi, new { @class = "form-control", type = "datetime-local" })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Binici</label>
+                    @Html.DropDownList("Biniciler_ID",
+                             (IEnumerable<SelectListItem>)ViewBag.Biniciler,
+                             "Binici Seçiniz",
+                             new { @class = "form-select" })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Eğitmen</label>
+                    @Html.DropDownList("Egitmenler_ID",
+                             (IEnumerable<SelectListItem>)ViewBag.Egitmenler,
+                             "Eğitmen Seçiniz",
+                             new { @class = "form-select" })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">At</label>
+                    @Html.DropDownList("Atlar_ID",
+                             (IEnumerable<SelectListItem>)ViewBag.Atlar,
+                             "At Seçiniz",
+                             new { @class = "form-select" })
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label class="form-label fw-bold">Ders Durumu</label>
+                    @Html.TextBoxFor(x => x.DersDurumu, new { @class = "form-control", placeholder = "Örn: Planlandı" })
+                </div>
+
+            </div>
+
+            <div class="d-flex gap-2 mt-3">
+                <button type="submit" class="btn btn-success rounded-3 px-4">
+                    💾 Ders Kaydet
+                </button>
+
+            </div>
+        }
+
+    </div>
+</div>

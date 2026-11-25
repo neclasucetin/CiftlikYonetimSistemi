@@ -1,0 +1,54 @@
+﻿
+@using CiftlikYonetimSistemi.Models
+@model Biniciler
+@{
+    ViewBag.Title = "Duzenle";
+    Layout = "~/Areas/YoneticiPanel/Views/Shared/YoneticiLayout.cshtml";
+}
+
+<div class="card mt-3">
+    <div class="card-header">
+        <h4>Binici Düzenle</h4>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+
+            if (ViewBag.durum != null)
+            {
+                if (ViewBag.durum == true)
+                {
+                    <div class="alert alert-success">Binici Düzenleme Başarılı</div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">Binici Düzenleme Başarısız</div>
+                }
+            }
+            <div class="mt-2">
+                <label>İsim</label>
+                @Html.EditorFor(model => model.Isim, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="mt-2">
+                <label>Soyisim</label>
+                @Html.EditorFor(model => model.Soyisim, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="mt-2">
+                <label>Telefon</label>
+                @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="mt-2">
+                <label>Email</label>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="mt-2">
+                <label>Deneyim Seviyesi</label>
+                @Html.EditorFor(model => model.DeneyimSeviyesi, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-primary">At Düzenle</button>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/YoneticiPanel/Views/Shared/YoneticiLayout.cshtml";
+}
+
+<div class="mb-4 rounded-4 overflow-hidden">
+    <img src="~/Images/Horse.png"
+         class="w-100"
+         style="height:300px; object-fit:cover; object-position:center 30%;"
+</div>
+<div class="row g-3 mb-4">
+
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0 rounded-4 mt-3">
+            <div class="card-body p-4" style="background-color: #E8EFE9; color: black">
+                <h5>🐴 Toplam At</h5>
+                <h3>@ViewBag.atSayi Adet</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        
+        <div class="card shadow-sm border-0 rounded-4 mt-3">
+            <div class="card-body p-4" style="background-color: #F5EFE5; color: black">
+                <h5>🏇 Toplam Binici</h5>
+                <h3>@ViewBag.biniciSayi Adet</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0 rounded-4 mt-3">
+            <div class="card-body p-4" style="background-color: #E3EBF2; color: black">
+                <h5>👨‍🏫 Toplam Eğitmen</h5>
+                <h3>@ViewBag.egitmenSayi Adet</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0 rounded-4 mt-3">
+            <div class="card-body p-4" style="background-color: #F3E5E1; color: black">
+                <h5>🏡 Toplam Pansiyoner</h5>
+                <h3>@ViewBag.pansiyonerSayi Adet</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+
+        <div class="col-md-3">
+            <a href="@Url.Action("Ekle", "At")" class="btn btn-success w-100 p-3">
+                🐎 At Ekle
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="@Url.Action("Ekle", "Binici")" class="btn btn-success w-100 p-3">
+                👤 Binici Ekle
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="@Url.Action("Ekle", "Egitmen")" class="btn btn-success w-100 p-3">
+                👨‍🏫 Eğitmen Ekle
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="@Url.Action("Ekle", "Ders")" class="btn btn-success w-100 p-3">
+                📚 Ders Ekle
+            </a>
+        </div>
+        <div class="mt-5 p-4 rounded-4" style="background-color: #F5EFE5;">
+
+            <div class="row g-4">
+
+                <div class="col-md-4 mt-2">
+                    <div class="card border-0 rounded-4 h-100 "
+                         style="background-color: #E8EFE9;">
+                        <div class="card-body text-center p-4">
+                            <h5 style="color: #1F352B;">🐎 Atlarımız</h5>
+                            <h6 class="mb-0">
+                                Atlarımızın bakım ve kayıt işlemleri düzenli olarak takip edilmektedir.
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mt-2">
+                    <div class="card border-0 rounded-4 h-100 "
+                         style="background-color: #E8EFE9;">
+                        <div class="card-body text-center p-4">
+                            <h5 style="color: #1F352B;">🌿 Doğayla İç İçe</h5>
+                            <h6 class="mb-0">
+                                Doğanın huzurunu ve binicilik deneyimini bir araya getiriyoruz.
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mt-2">
+                    <div class="card border-0 rounded-4 h-100"
+                         style="background-color: #E8EFE9;">
+                        <div class="card-body text-center p-4">
+                            <h5 style="color: #1F352B;">🤎 Binicilik</h5>
+                            <h6 class="mb-0">
+                                Dersler ve binici kayıtları tek bir sistem üzerinden yönetilmektedir.
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

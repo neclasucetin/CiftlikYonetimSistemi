@@ -1,0 +1,89 @@
+﻿@using CiftlikYonetimSistemi.Models
+@model List<Dersler>
+
+@{
+    ViewBag.Title = "Ders Listele";
+    Layout = "~/Areas/YoneticiPanel/Views/Shared/YoneticiLayout.cshtml";
+}
+
+<div class="card mt-4 shadow border-0 rounded-4">
+
+    <div class="card-header bg-success text-white p-4 rounded-top-4">
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+                <h4 class="mb-1">📚 Ders Yönetimi</h4>
+                <small>Çiftlikte kayıtlı dersleri görüntüleyebilirsiniz.</small>
+            </div>
+
+            <a href="@Url.Action("Ekle", "Ders")"
+               class="btn btn-light rounded-3">
+                + Yeni Ders Ekle
+            </a>
+
+        </div>
+    </div>
+
+    <div class="card-body p-4">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover table-striped align-middle">
+
+                <thead class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Ders Tarihi</th>
+                        <th>Binici</th>
+                        <th>Eğitmen</th>
+                        <th>At</th>
+                        <th>Ders Durumu</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (Dersler item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.DersTarihi.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>
+                                @(item.Biniciler != null ? item.Biniciler.Isim + " " + item.Biniciler.Soyisim : "-")
+                            </td>
+                            <td>
+                                @(item.Egitmenler != null ? item.Egitmenler.Isim + " " + item.Egitmenler.Soyisim : "-")
+                            </td>
+                            <td>
+                                @(item.Atlar != null ? item.Atlar.AtAdi : "-")
+                            </td>
+                            <td>
+                                <span class="badge bg-success">
+                                    @item.DersDurumu
+                                </span>
+                            </td>
+
+                            <td>
+                                <a href="@Url.Action("Duzenle", "Ders", new { id = item.ID })"
+                                   class="btn btn-primary btn-sm rounded-3 mb-1">
+                                    Düzenle
+                                </a>
+
+                                <a href="@Url.Action("Sil", "Ders", new { id = item.ID })"
+                                   class="btn btn-danger btn-sm rounded-3 mb-1"
+                                   onclick="return confirm('Bu dersi silmek istediğinize emin misiniz?');">
+                                    Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+</div>

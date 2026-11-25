@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CiftlikYonetimiDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Atlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AtAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Yas" Type="Int32" />
+    <Property Name="Cinsiyet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Irk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Renk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaglikDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pansiyonerler_ID" Type="Int32" />
+    <NavigationProperty Name="Pansiyonerler" Relationship="Self.FK__Atlar__Pansiyone__4E88ABD4" FromRole="Atlar" ToRole="Pansiyonerler" />
+    <NavigationProperty Name="Dersler" Relationship="Self.FK__Dersler__Atlar_I__571DF1D5" FromRole="Atlar" ToRole="Dersler" />
+  </EntityType>
+  <EntityType Name="Biniciler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeneyimSeviyesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Dersler" Relationship="Self.FK__Dersler__Binicil__5535A963" FromRole="Biniciler" ToRole="Dersler" />
+  </EntityType>
+  <EntityType Name="Dersler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DersTarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Biniciler_ID" Type="Int32" />
+    <Property Name="Egitmenler_ID" Type="Int32" />
+    <Property Name="Atlar_ID" Type="Int32" />
+    <Property Name="DersDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Atlar" Relationship="Self.FK__Dersler__Atlar_I__571DF1D5" FromRole="Dersler" ToRole="Atlar" />
+    <NavigationProperty Name="Biniciler" Relationship="Self.FK__Dersler__Binicil__5535A963" FromRole="Dersler" ToRole="Biniciler" />
+    <NavigationProperty Name="Egitmenler" Relationship="Self.FK__Dersler__Egitmen__5629CD9C" FromRole="Dersler" ToRole="Egitmenler" />
+  </EntityType>
+  <EntityType Name="Egitmenler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UzmanlikAlani" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Dersler" Relationship="Self.FK__Dersler__Egitmen__5629CD9C" FromRole="Egitmenler" ToRole="Dersler" />
+  </EntityType>
+  <EntityType Name="Pansiyonerler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Atlar" Relationship="Self.FK__Atlar__Pansiyone__4E88ABD4" FromRole="Pansiyonerler" ToRole="Atlar" />
+  </EntityType>
+  <EntityType Name="Yoneticiler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Atlar__Pansiyone__4E88ABD4">
+    <End Role="Pansiyonerler" Type="Self.Pansiyonerler" Multiplicity="0..1" />
+    <End Role="Atlar" Type="Self.Atlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pansiyonerler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Atlar">
+        <PropertyRef Name="Pansiyonerler_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dersler__Atlar_I__571DF1D5">
+    <End Role="Atlar" Type="Self.Atlar" Multiplicity="0..1" />
+    <End Role="Dersler" Type="Self.Dersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Atlar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dersler">
+        <PropertyRef Name="Atlar_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dersler__Binicil__5535A963">
+    <End Role="Biniciler" Type="Self.Biniciler" Multiplicity="0..1" />
+    <End Role="Dersler" Type="Self.Dersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Biniciler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dersler">
+        <PropertyRef Name="Biniciler_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dersler__Egitmen__5629CD9C">
+    <End Role="Egitmenler" Type="Self.Egitmenler" Multiplicity="0..1" />
+    <End Role="Dersler" Type="Self.Dersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Egitmenler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dersler">
+        <PropertyRef Name="Egitmenler_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CiftlikYonetimiDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Atlar" EntityType="Self.Atlar" />
+    <EntitySet Name="Biniciler" EntityType="Self.Biniciler" />
+    <EntitySet Name="Dersler" EntityType="Self.Dersler" />
+    <EntitySet Name="Egitmenler" EntityType="Self.Egitmenler" />
+    <EntitySet Name="Pansiyonerler" EntityType="Self.Pansiyonerler" />
+    <EntitySet Name="Yoneticiler" EntityType="Self.Yoneticiler" />
+    <AssociationSet Name="FK__Atlar__Pansiyone__4E88ABD4" Association="Self.FK__Atlar__Pansiyone__4E88ABD4">
+      <End Role="Pansiyonerler" EntitySet="Pansiyonerler" />
+      <End Role="Atlar" EntitySet="Atlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dersler__Atlar_I__571DF1D5" Association="Self.FK__Dersler__Atlar_I__571DF1D5">
+      <End Role="Atlar" EntitySet="Atlar" />
+      <End Role="Dersler" EntitySet="Dersler" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dersler__Binicil__5535A963" Association="Self.FK__Dersler__Binicil__5535A963">
+      <End Role="Biniciler" EntitySet="Biniciler" />
+      <End Role="Dersler" EntitySet="Dersler" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dersler__Egitmen__5629CD9C" Association="Self.FK__Dersler__Egitmen__5629CD9C">
+      <End Role="Egitmenler" EntitySet="Egitmenler" />
+      <End Role="Dersler" EntitySet="Dersler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

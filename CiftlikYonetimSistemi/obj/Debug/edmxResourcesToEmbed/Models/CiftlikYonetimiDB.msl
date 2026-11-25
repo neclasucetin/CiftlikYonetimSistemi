@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CiftlikYonetimiDBModelStoreContainer" CdmEntityContainer="CiftlikYonetimiDBEntities">
+    <EntitySetMapping Name="Atlar">
+      <EntityTypeMapping TypeName="CiftlikYonetimiDBModel.Atlar">
+        <MappingFragment StoreEntitySet="Atlar">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AtAdi" ColumnName="AtAdi" />
+          <ScalarProperty Name="Yas" ColumnName="Yas" />
+          <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+          <ScalarProperty Name="Irk" ColumnName="Irk" />
+          <ScalarProperty Name="Renk" ColumnName="Renk" />
+          <ScalarProperty Name="SaglikDurumu" ColumnName="SaglikDurumu" />
+          <ScalarProperty Name="Pansiyonerler_ID" ColumnName="Pansiyonerler_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Biniciler">
+      <EntityTypeMapping TypeName="CiftlikYonetimiDBModel.Biniciler">
+        <MappingFragment StoreEntitySet="Biniciler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Isim" ColumnName="Isim" />
+          <ScalarProperty Name="Soyisim" ColumnName="Soyisim" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DeneyimSeviyesi" ColumnName="DeneyimSeviyesi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dersler">
+      <EntityTypeMapping TypeName="CiftlikYonetimiDBModel.Dersler">
+        <MappingFragment StoreEntitySet="Dersler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DersTarihi" ColumnName="DersTarihi" />
+          <ScalarProperty Name="Biniciler_ID" ColumnName="Biniciler_ID" />
+          <ScalarProperty Name="Egitmenler_ID" ColumnName="Egitmenler_ID" />
+          <ScalarProperty Name="Atlar_ID" ColumnName="Atlar_ID" />
+          <ScalarProperty Name="DersDurumu" ColumnName="DersDurumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Egitmenler">
+      <EntityTypeMapping TypeName="CiftlikYonetimiDBModel.Egitmenler">
+        <MappingFragment StoreEntitySet="Egitmenler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Isim" ColumnName="Isim" />
+          <ScalarProperty Name="Soyisim" ColumnName="Soyisim" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UzmanlikAlani" ColumnName="UzmanlikAlani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pansiyonerler">
+      <EntityTypeMapping TypeName="CiftlikYonetimiDBModel.Pansiyonerler">
+        <MappingFragment StoreEntitySet="Pansiyonerler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Isim" ColumnName="Isim" />
+          <ScalarProperty Name="Soyisim" ColumnName="Soyisim" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yoneticiler">
+      <EntityTypeMapping TypeName="CiftlikYonetimiDBModel.Yoneticiler">
+        <MappingFragment StoreEntitySet="Yoneticiler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Isim" ColumnName="Isim" />
+          <ScalarProperty Name="Soyisim" ColumnName="Soyisim" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

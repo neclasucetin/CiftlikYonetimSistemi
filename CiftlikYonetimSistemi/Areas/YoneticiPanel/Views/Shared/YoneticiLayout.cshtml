@@ -1,0 +1,233 @@
+﻿@using CiftlikYonetimSistemi.Models
+
+<!DOCTYPE html>
+@{
+    string kullanici = "";
+    if (Session["yonetici"] != null)
+    {
+        Yoneticiler yon = (Yoneticiler)Session["yonetici"];
+        kullanici = yon.Isim + " " + yon.Soyisim;
+    }
+    else
+    {
+        Context.Response.Redirect(Url.Action("GirisYap", "Yonetici"));
+    }
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .bgYesil1 {
+            background-color: #1F352B;
+        }
+        .bgBej1 {
+            background-color: #F5EFE5;
+        }
+        body {
+            background-color: #F5EFE5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar navbar-dark sticky-top bgBej1 flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 bgYesil1" href="@Url.Action("Index", "Anasayfa")">
+            Çiftlik Yönetimi
+        </a>
+
+        <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+                <a href="#" class="nav-link px-3 text-dark">@kullanici</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link px-3 text-dark" href="@Url.Action("CikisYap", "Yonetici")">
+                    Çıkış Yap
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- SOL MENÜ -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse min-vh-100 bgYesil1">
+
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+
+                        <!-- ANA SAYFA -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="@Url.Action("Index", "Anasayfa")">
+                                Ana Sayfa
+                            </a>
+                        </li>
+
+                        <!-- ATLAR -->
+                        <li class="nav-item">
+
+                            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                               data-bs-toggle="collapse" href="#atlarMenu">
+
+                                Atlar
+                                <span>⌄</span>
+                            </a>
+
+                            <div class="collapse" id="atlarMenu">
+                                <ul class="nav flex-column ms-3">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Listele", "At")">
+                                            At Listesi
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Ekle", "At")">
+                                            At Ekle
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- PANSIYONERLER -->
+                        <li class="nav-item">
+
+                            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                               data-bs-toggle="collapse" href="#pansiyonerMenu">
+
+                                Pansiyonerler
+                                <span>⌄</span>
+                            </a>
+
+                            <div class="collapse" id="pansiyonerMenu">
+                                <ul class="nav flex-column ms-3">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Listele", "Pansiyoner")">
+                                            Pansiyoner Listesi
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Ekle", "Pansiyoner")">
+                                            Pansiyoner Ekle
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- BINICILER -->
+                        <li class="nav-item">
+
+                            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                               data-bs-toggle="collapse" href="#biniciMenu">
+
+                                Biniciler
+                                <span>⌄</span>
+                            </a>
+
+                            <div class="collapse" id="biniciMenu">
+                                <ul class="nav flex-column ms-3">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Listele", "Binici")">
+                                            Binici Listesi
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Ekle", "Binici")">
+                                            Binici Ekle
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- EGITMENLER -->
+                        <li class="nav-item">
+
+                            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                               data-bs-toggle="collapse" href="#egitmenMenu">
+
+                                Eğitmenler
+                                <span>⌄</span>
+                            </a>
+
+                            <div class="collapse" id="egitmenMenu">
+                                <ul class="nav flex-column ms-3">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Listele", "Egitmen")">
+                                            Eğitmen Listesi
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Ekle", "Egitmen")">
+                                            Eğitmen Ekle
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- DERSLER -->
+                        <li class="nav-item">
+
+                            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                               data-bs-toggle="collapse" href="#dersMenu">
+
+                                Dersler
+                                <span>⌄</span>
+                            </a>
+
+                            <div class="collapse" id="dersMenu">
+                                <ul class="nav flex-column ms-3">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Listele", "Ders")">
+                                            Ders Listesi
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="@Url.Action("Ekle", "Ders")">
+                                            Ders Ekle
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <!-- SAYFA İÇERİĞİ -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                @RenderBody()
+
+            </main>
+
+        </div>
+    </div>
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
